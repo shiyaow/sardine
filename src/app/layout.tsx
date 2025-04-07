@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import NavBar from "../components/NavBar";
+import NavBarMobile from "../components/NavBar-mobile";
+import Footer from "../components/Footer";
+import Box from "../elements/Box";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +31,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        {/* Navbar - Outside of grid layout */}
+        <Box mobileOnly>
+          <NavBarMobile />
+        </Box>
+        <Box desktopOnly>
+          <NavBar />
+        </Box>
+        <div className="min-h-screen">{children}</div>
+        {/* Footer */}
+        <Footer />
       </body>
     </html>
   );
