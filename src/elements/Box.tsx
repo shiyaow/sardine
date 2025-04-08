@@ -3,6 +3,7 @@ type Props = {
   mobileOnly?: boolean;
   desktopOnly?: boolean;
   className?: string;
+  testName?: string;
 };
 
 const Box = ({
@@ -10,13 +11,14 @@ const Box = ({
   className,
   mobileOnly = false,
   desktopOnly = false,
+  testName,
 }: Props) => {
   return (
     <div
+      data-testid={testName}
       className={
         (mobileOnly ? "md:hidden" : desktopOnly ? "hidden md:block" : "") +
-        " " +
-        className
+        (className ? " " + className : "")
       }
     >
       {children}
