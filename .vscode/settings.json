@@ -1,0 +1,26 @@
+{
+  "css.validate": false,
+  "tailwindCSS.includeLanguages": {
+    "typescript": "typescript",
+    "typescriptreact": "typescriptreact"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "files.associations": {
+    "*.css": "css"
+  },
+  "editor.colorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "source.css",
+        "settings": {
+          "foreground": "#d4d4d4"
+        }
+      }
+    ]
+  },
+  "workbench.colorCustomizations": {
+    "editor.foreground": "#d4d4d4"
+  }
+}
