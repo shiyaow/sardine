@@ -1,13 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
-import NavLink from "../elements/NavLink";
+import NavLink from "../../elements/NavLink";
+import type { NavLink as NavLinkType } from "../../types/link";
 
-interface MobileMenuProps {
+interface Props {
   isOpen: boolean;
   onClose: () => void;
+  navLinks: NavLinkType[];
 }
 
-const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
+const MobileMenu = ({ isOpen, onClose, navLinks }: Props) => {
   return (
     <div
       className={`fixed inset-0 z-50 h-screen bg-white transition-transform duration-300 ease-in-out dark:bg-gray-900 ${
@@ -35,18 +37,11 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
 
         {/* Navigation Links */}
         <nav className="flex flex-col gap-4 p-4">
-          <NavLink href="/series" onClick={onClose}>
-            Series
-          </NavLink>
-          <NavLink href="/films" onClick={onClose}>
-            Films
-          </NavLink>
-          <NavLink href="/my-list" onClick={onClose}>
-            My list
-          </NavLink>
-          <NavLink href="/recommended" onClick={onClose}>
-            Recommended for me
-          </NavLink>
+          {navLinks?.map((navLink) => (
+            <NavLink key={navLink.label} href={navLink.href}>
+              {navLink.text}
+            </NavLink>
+          ))}
         </nav>
 
         {/* Footer Links */}

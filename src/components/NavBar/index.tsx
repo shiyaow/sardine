@@ -1,12 +1,17 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import NavLink from "../elements/NavLink";
-import Box from "../elements/Box";
-import { SearchBar } from "../components/Search";
-import Stack from "../elements/Stack";
+import NavLink from "../../elements/NavLink";
+import Box from "../../elements/Box";
+import { SearchBar } from "../Search";
+import Stack from "../../elements/Stack";
+import { useState } from "react";
+import MobileMenu from "./MobileMenu";
+import { navLinks } from "./constants";
 
 const NavBar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-black/10 bg-white/75 backdrop-blur-sm dark:bg-gray-900/75">
       <Box className="mx-auto px-4">
@@ -18,17 +23,20 @@ const NavBar = () => {
               </div>
               <span>Sardine</span>
             </Link>
-            <Stack className="items-center gap-4">
-              <NavLink href="/series">Series</NavLink>
-              <NavLink href="/films">Films</NavLink>
-              <NavLink href="/my-list">My list</NavLink>
-              <NavLink href="/recommended">Recommended for me</NavLink>
+            <Stack desktopOnly className="items-center gap-4">
+              {navLinks.map((navLink) => (
+                <NavLink key={navLink.label} href={navLink.href}>
+                  {navLink.text}
+                </NavLink>
+              ))}
             </Stack>
           </Stack>
 
-          <SearchBar />
+          <Box desktopOnly>
+            <SearchBar />
+          </Box>
 
-          <Box desktopOnly className="flex items-center gap-4">
+          <Stack desktopOnly className="items-center gap-4">
             <a
               href="#"
               className="px-4 py-2 text-sm text-gray-600 transition-colors duration-200 hover:text-black dark:text-gray-300 dark:hover:text-white"
@@ -41,6 +49,23 @@ const NavBar = () => {
             >
               Login
             </a>
+          </Stack>
+
+          <Box mobileOnly>
+            <button
+              onClick={() => setIsMenuOpen(true)}
+              className="rounded-lg p-2 text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+              aria-label="Open menu"
+            >
+              <Image src="/burger.svg" alt="Menu" width={24} height={24} />
+            </button>
+            <MobileMenu
+              navLinks={navLinks}
+              isOpen={isMenuOpen}
+              onClose={() => {
+                setIsMenuOpen(false);
+              }}
+            />
           </Box>
         </Stack>
       </Box>

@@ -14,11 +14,9 @@ const Stack = ({
   return (
     <div
       className={
-        mobileOnly
-          ? "md:hidden"
-          : desktopOnly
-            ? "hidden md:flex"
-            : "flex " + className
+        (mobileOnly ? "md:hidden" : desktopOnly ? "hidden md:flex" : "flex") +
+        " " +
+        className
       }
     >
       {children}

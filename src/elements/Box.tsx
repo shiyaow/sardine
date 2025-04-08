@@ -14,11 +14,9 @@ const Box = ({
   return (
     <div
       className={
-        mobileOnly
-          ? "md:hidden"
-          : desktopOnly
-            ? "hidden md:block"
-            : "" + className
+        (mobileOnly ? "md:hidden" : desktopOnly ? "hidden md:block" : "") +
+        " " +
+        className
       }
     >
       {children}
