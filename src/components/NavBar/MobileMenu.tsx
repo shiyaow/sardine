@@ -38,7 +38,7 @@ const MobileMenu = ({ isOpen, onClose, navLinks }: Props) => {
         {/* Navigation Links */}
         <nav className="flex flex-col gap-4 p-4">
           {navLinks?.map((navLink) => (
-            <NavLink key={navLink.label} href={navLink.href}>
+            <NavLink key={navLink.label} href={navLink.href} onClick={onClose}>
               {navLink.text}
             </NavLink>
           ))}

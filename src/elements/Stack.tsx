@@ -3,6 +3,7 @@ type Props = {
   mobileOnly?: boolean;
   desktopOnly?: boolean;
   className?: string;
+  testName?: string;
 };
 
 const Stack = ({
@@ -10,13 +11,14 @@ const Stack = ({
   className,
   mobileOnly = false,
   desktopOnly = false,
+  testName,
 }: Props) => {
   return (
     <div
+      data-testid={testName}
       className={
         (mobileOnly ? "md:hidden" : desktopOnly ? "hidden md:flex" : "flex") +
-        " " +
-        className
+        (className ? " " + className : "")
       }
     >
       {children}

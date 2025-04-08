@@ -1,5 +1,7 @@
 import SharedLayout from "../../components/sharedLayout";
 import type { MenuLink } from "../../components/sharedLayout";
+import { DeviceGroup } from "../../types/meta";
+import { getDeviceGroup } from "../../utils/device";
 
 const navLinks: MenuLink[] = [
   { label: "popular", href: "/films/popular", text: "Popular" },
@@ -16,7 +18,13 @@ const navLinks: MenuLink[] = [
 ];
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
-  return <SharedLayout navLinks={navLinks}>{children}</SharedLayout>;
+  const isMobile = getDeviceGroup() === DeviceGroup.mobile;
+
+  return isMobile ? (
+    <SharedLayout navLinks={navLinks}>{children}</SharedLayout>
+  ) : (
+    <div data-testid="film-desktop-layout">{children}</div>
+  );
 };
 
 Layout.displayName = "Layout";
