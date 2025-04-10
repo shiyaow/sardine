@@ -18,12 +18,13 @@ const navLinks: MenuLink[] = [
 ];
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
-  const isMobile = getDeviceGroup() === DeviceGroup.mobile;
+  const notMobile = getDeviceGroup() !== DeviceGroup.desktop;
 
-  return isMobile ? (
+  console.log(getDeviceGroup());
+  return notMobile ? (
     <SharedLayout navLinks={navLinks}>{children}</SharedLayout>
   ) : (
-    <div data-testid="film-desktop-layout">{children}</div>
+    <div data-testid="film-mobile-layout">{children}</div>
   );
 };
 
