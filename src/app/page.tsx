@@ -4,6 +4,8 @@ import { getTrendingTV, getTopRatedTV } from "../TMDB/tv/services";
 import CategorySection from "./CategorySection";
 import FilmCardPlaceholder from "../elements/FilmCardPlaceholder";
 
+export const dynamic = "force-dynamic";
+
 async function FilmContent() {
   const [trendingFilms, topRatedFilms, trendingTV, topRatedTV] =
     await Promise.all([
