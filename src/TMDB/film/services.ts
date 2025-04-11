@@ -8,8 +8,9 @@ export async function getTrendingFilms() {
       `${TMDB_ENDPOINTS.MOVIE.TRENDING}week`,
     );
     return data.results;
-  } catch {
-    throw new Error("Failed to fetch trending films");
+  } catch (error) {
+	console.log("Token is:", process.env.AUTH_TOKEN); 
+    throw new Error("Failed to fetch trending films", { cause: error });
   }
 }
 
