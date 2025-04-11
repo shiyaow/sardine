@@ -1,5 +1,5 @@
 import Image from "next/image";
-import StarIcon from "./StarIcon";
+import StarIcon from "./icons/StarIcon";
 
 interface FilmCardProps {
   title: string;
@@ -14,7 +14,7 @@ const FilmCard = ({ title, imageUrl, rating, year }: FilmCardProps) => {
       data-testid="film-card-container"
       className="group relative h-[450px] w-[300px] overflow-hidden rounded-lg"
     >
-      <div className="relative h-full w-full">
+      <div className="h-full w-full">
         <Image
           src={imageUrl}
           alt={title}
@@ -25,7 +25,7 @@ const FilmCard = ({ title, imageUrl, rating, year }: FilmCardProps) => {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           unoptimized={false}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+        <div className="absolute inset-0 border-2 border-red-100 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           <div
             data-testid="film-card-info"
             className="absolute bottom-0 left-0 right-0 w-full p-4 text-white"
@@ -33,7 +33,7 @@ const FilmCard = ({ title, imageUrl, rating, year }: FilmCardProps) => {
             <h3 className="line-clamp-2 text-lg font-semibold">{title}</h3>
             <div className="mt-1 flex items-center justify-between text-sm text-gray-300">
               <span>{year}</span>
-              <div className="flex items-center">
+              <div className="flex items-center" style={{ gap: "2px" }}>
                 <StarIcon />
                 <span>{rating.toFixed(1)}</span>
               </div>
