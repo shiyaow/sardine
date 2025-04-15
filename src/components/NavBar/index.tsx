@@ -41,9 +41,7 @@ const NavBar = () => {
             )}
           </Stack>
 
-          <Box desktopOnly>
-            <SearchBar />
-          </Box>
+          {!isMobile && <SearchBar />}
           {!isMobile && (
             <Stack
               testName="desktop-links"

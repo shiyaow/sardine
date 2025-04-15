@@ -17,7 +17,7 @@ const Box = ({
     <div
       data-testid={testName}
       className={
-        (mobileOnly ? "md:hidden" : desktopOnly ? "hidden md:block" : "") +
+        (mobileOnly ? "md:hidden" : desktopOnly ? "hidden md:flex" : "") +
         (className ? " " + className : "")
       }
     >

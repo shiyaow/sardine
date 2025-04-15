@@ -22,5 +22,6 @@
   },
   "workbench.colorCustomizations": {
     "editor.foreground": "#d4d4d4"
-  }
+  },
+  "cSpell.words": ["TMDB", "TMDBTV"]
 }
